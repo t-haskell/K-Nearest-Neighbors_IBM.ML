@@ -70,3 +70,21 @@ from sklearn.neighbors import KNeighborsClassifier
 k = 4 # number of neighbors to be considered
 neigh = KNeighborsClassifier(n_neighbors = k).fit(X_train_norm, y_train)
 print(neigh)
+
+# Predicting
+X_test_norm = preprocessing.StandardScaler().fit(X_test).transform(X_test.astype(float))
+X_test_norm[0:5]
+yhat = neigh.predict(X_test_norm)
+
+## Accuracy Evaluation
+from sklearn import metrics
+print("Train set Accuracy: ", metrics.accuracy_score(y_train, neigh.predict(X_train_norm)))
+print("Test set Accuracy: ", metrics.accuracy_score(y_test, yhat))
+
+
+## New model with 6 neighbors instead of 4
+sleigh = KNeighborsClassifier(n_neighbors = 6).fit(X_train_norm,y_train)
+yhat6 = sleigh.predict(X_test_norm)
+print("Train set Accuracy (using 6 neighbors): ", metrics.accuracy_score(y_train, sleigh.predict(X_train_norm)))
+print("Test set Accuracy (using 6 neighbors): ", metrics.accuracy_score(y_test, yhat6))
+

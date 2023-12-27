@@ -32,8 +32,12 @@ def download(url, filename):
     
 path="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-ML0101EN-SkillsNetwork/labs/Module%203/data/teleCust1000t.csv"
 
-download(path, "teleCust1000t.csv")
+download(path, "teleCust1000t.csv") #(might take a minute to download on first run)#
 # reading in data to a pandas dataframe
 df = pd.read_csv("teleCust1000t.csv")
 print(df.head())
 
+print(df['custcat'].value_counts())
+
+print(df.hist(column='income', bins=50))
+plt.show()

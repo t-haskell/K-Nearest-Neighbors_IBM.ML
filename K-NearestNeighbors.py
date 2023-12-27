@@ -39,5 +39,34 @@ print(df.head())
 
 print(df['custcat'].value_counts())
 
-print(df.hist(column='income', bins=50))
+df.hist(column='income', bins=50)
 plt.show()
+
+## Creating Feature Sets
+print(df.columns)
+# converting to a Numpy array to be compatible with scikit-learn
+X = df[['region', 'tenure', 'age', 'address', 'income', 'ed', 'employ', 'retire', 'gender', 'reside']]
+# finding labels
+y = df['custcat'].values
+print(y[0:5])
+
+## Splitting Test & Train Datasets
+# To opitmize out-of-sample accuracy, we split the data into mutually exclusive
+# sets for training and testing.
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=4)
+# Visualizing the training set
+print(f"Train set: {X_train.shape} {y_train.shape}")
+# Visualing the testing set
+print(f"Test set: {X_test.shape} {y_test.shape}")
+
+## Normalizing data (good practice to apply zero mean and unit variance when finding distance)
+X_train_norm = preprocessing.StandardScaler().fit(X_train).transform(X_train.astype(float))
+print(X_train_norm[0:5])
+
+## Implementing K-Nearest Neighbors method
+from sklearn.neighbors import KNeighborsClassifier
+# Training 
+k = 4 # number of neighbors to be considered
+neigh = KNeighborsClassifier(n_neighbors = k).fit(X_train_norm, y_train)
+print(neigh)

@@ -64,7 +64,8 @@ print(f"Test set: {X_test.shape} {y_test.shape}")
 X_train_norm = preprocessing.StandardScaler().fit(X_train).transform(X_train.astype(float))
 print(X_train_norm[0:5])
 
-## Implementing K-Nearest Neighbors method
+
+######## Implementing K-Nearest Neighbors method ########
 from sklearn.neighbors import KNeighborsClassifier
 # Training 
 k = 4 # number of neighbors to be considered
@@ -88,3 +89,32 @@ yhat6 = sleigh.predict(X_test_norm)
 print("Train set Accuracy (using 6 neighbors): ", metrics.accuracy_score(y_train, sleigh.predict(X_train_norm)))
 print("Test set Accuracy (using 6 neighbors): ", metrics.accuracy_score(y_test, yhat6))
 
+
+######## Finding Optimal Number of Neighbors ########
+# Process -> test multiple values of k starting at 1, and see which results in highest accuracy.
+
+Ks = 10
+# creating arrays to hold metrics of different k-value models
+mean_acc = np.zeros((Ks-1))
+std_acc = np.zeros((Ks-1))
+
+for n in range(1,Ks):
+    
+    #Train model with n neighbors and predict
+    nneigh = KNeighborsClassifier(n_neighbors = n).fit(X_train_norm, y_train)
+    yhat = nneigh.predict(X_test_norm)
+    mean_acc[n-1] = metrics.accuracy_score(y_test, yhat) # recording mean each model
+    std_acc[n-1] = np.std(yhat==y_test)/np.sqrt(yhat.shape[0]) # recording std. deviation for each model
+
+mean_acc
+
+
+#### Visualizing the results ####
+plt.plot(range(1,Ks), mean_acc, 'g')
+plt.fill_between(range(1,Ks),mean_acc - 1 * std_acc, mean_acc + 1 * std_acc, alpha = 0.10)
+plt.fill_between(range(1,Ks), mean_acc - 3 * std_acc, mean_acc + 3 * std_acc, alpha=0.10, color="green")
+plt.legend(('Accuracy ', '+/- 1xstd', '+/- 3xstd'))
+plt.ylabel('Accuracy ')
+plt.xlabel('Number of Neighbors (K)')
+plt.tight_layout()
+plt.show()

@@ -40,6 +40,14 @@ print(df.head())
 print(df['custcat'].value_counts())
 
 df.hist(column='income', bins=50)
+plt.ylabel('Quantity of Customers')
+plt.xlabel('Customer Income (x1000)')
+plt.show()
+df.hist(column='custcat', bins=25)
+plt.ylabel('Quantity of Customers')
+plt.xlabel('Customer Category')
+plt.title('Customer Category Distribution')
+plt.autoscale(True)
 plt.show()
 
 ## Creating Feature Sets

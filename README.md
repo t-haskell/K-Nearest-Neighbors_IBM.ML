@@ -4,7 +4,7 @@
 
 ## Description
 
-This lab explores the application of the K-Nearest Neighbors (KNN) algorithm for classification, using customer demographic data. The goal is to classify telecommunications customers into specific identification groups based on features such as region, tenure, age, and income. The lab is part of the IBM Machine Learning with Python Certification Course.
+This lab explores the application of the K-Nearest Neighbors (KNN) algorithm for classification, using customer demographic data. The goal is to classify telecommunications customers into specific identification groups (Basic-service, E-Service, Plus Service, and Total Service) based on features such as region, tenure, age, and income. The lab is part of the IBM Machine Learning with Python Certification Course.
 
 ## Objectives
 
@@ -30,6 +30,9 @@ The dataset used in this lab can be found [here](https://cf-courses-data.s3.us.c
 
 - View the first few rows of the dataset.
 - Explore the distribution of the target variable (`custcat`) using histograms.
+![image](https://github.com/t-haskell/K-Nearest-Neighbors_IBM.ML/blob/master/KNN-custcatDistribution.png?raw=true)
+![image](https://github.com/t-haskell/K-Nearest-Neighbors_IBM.ML/blob/master/KNNcustomerIncome.png?raw=true)
+
 
 ## Feature Selection
 
@@ -49,4 +52,4 @@ The dataset used in this lab can be found [here](https://cf-courses-data.s3.us.c
 ## Results
 
 - Compare the accuracy of KNN models with varying numbers of neighbors.
-- Visualize the accuracy results to identify the optimal number of neighbors.
+- Visualize the accuracy results to identify the optimal number of neighbors for the best prediction.

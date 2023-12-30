@@ -24,7 +24,7 @@ The dataset used in this lab can be found [here](https://cf-courses-data.s3.us.c
 
 1. Clone the repository or download the zip file from GitHub.
 2. Run the provided Python script to download the dataset.
-3. Execute the lab script (`KNN_Classification_Lab.py`).
+3. Execute the lab script (`K-NearestNeighbors.py`).
 
 ## Exploratory Data Analysis
 
@@ -42,11 +42,11 @@ The dataset used in this lab can be found [here](https://cf-courses-data.s3.us.c
 - Implement the K-Nearest Neighbors algorithm with different numbers of neighbors.
 - Evaluate model accuracy on both training and testing sets.
 
+## Visualization
+
+![image](https://github.com/t-haskell/K-Nearest-Neighbors_IBM.ML/blob/master/KNNvisualization.png?raw=true)
+
 ## Results
 
 - Compare the accuracy of KNN models with varying numbers of neighbors.
 - Visualize the accuracy results to identify the optimal number of neighbors.
-
-## Conclusion
-
-This lab provides hands-on experience with K-Nearest Neighbors for classification tasks, offering insights into the impact of feature selection and the choice of the number of neighbors on model performance.
